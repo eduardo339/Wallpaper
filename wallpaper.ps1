@@ -9,8 +9,10 @@ if (!(Test-Path "C:\Temp")) {
 
 # Asegurar los permisos adecuados para la carpeta C:\Temp
 $acl = Get-Acl "C:\Temp"
-$acl.SetAccessRule((New-Object System.Security.AccessControl.FileSystemAccessRule("Everyone", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")))
+$rule = New-Object System.Security.AccessControl.FileSystemAccessRule("NT AUTHORITY\SYSTEM", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$acl.SetAccessRule($rule)
 Set-Acl "C:\Temp" $acl
+
 # Manejar los permisos de administrador si es necesario (asegurarse de que el script se ejecute con permisos elevados)
 try {
     # Descargar la imagen
