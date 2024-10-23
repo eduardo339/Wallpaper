@@ -1,10 +1,10 @@
 # Ruta de descarga y permisos para entornos gestionados con Acronis Cyber Protect Cloud
 $imageUrl = "https://github.com/eduardo339/Wallpaper/blob/main/3.5Roles.jpg?raw=true"
 # Definir una ruta segura para la cuenta del sistema
-$imagePath = "C:\Wallpapers\3.5Roles.jpg"
+$imagePath = "C:\Temp\3.5Roles.jpg"
 # Crear el directorio si no existe
-if (!(Test-Path "C:\Wallpapers")) {
-    New-Item -Path "C:\Wallpapers" -ItemType Directory
+if (!(Test-Path "C:\Temp")) {
+    New-Item -Path "C:\Temp" -ItemType Directory
 }
 
 # Asegurar los permisos adecuados para la carpeta C:\Temp
