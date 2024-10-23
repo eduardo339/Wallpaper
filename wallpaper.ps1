@@ -6,6 +6,11 @@ $imagePath = "C:\Wallpapers\3.5Roles.jpg"
 if (!(Test-Path "C:\Wallpapers")) {
     New-Item -Path "C:\Wallpapers" -ItemType Directory
 }
+
+# Asegurar los permisos adecuados para la carpeta C:\Temp
+$acl = Get-Acl "C:\Temp"
+$acl.SetAccessRule((New-Object System.Security.AccessControl.FileSystemAccessRule("Everyone", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")))
+Set-Acl "C:\Temp" $acl
 # Manejar los permisos de administrador si es necesario (asegurarse de que el script se ejecute con permisos elevados)
 try {
     # Descargar la imagen
